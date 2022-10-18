@@ -1,7 +1,0 @@
-ticket-debug.2021-09-08.0.log
-ticket-debug.2021-09-08.3.log
-ticket-debug.2021-09-08.6.log
-ticket-debug.2021-09-08.1.log
-ticket-debug.2021-09-08.4.log
-ticket-debug.2021-09-08.2.log
-ticket-debug.2021-09-08.5.log
