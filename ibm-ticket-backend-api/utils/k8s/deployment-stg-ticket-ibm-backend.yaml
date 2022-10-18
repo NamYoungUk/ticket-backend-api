@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: stg-ticket-ibm-backend
+  name: stg-ticket-ibm-backend
+  namespace: z-care-app
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: stg-ticket-ibm-backend
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: stg-ticket-ibm-backend
+    spec:
+      containers:
+      - image: docker.io/ticketadmin/stg-ticket-ibm-backend:202201031200
+        imagePullPolicy: Always
+        name: stg-ticket-ibm-backend
+        ports:
+        - containerPort: 8099
+          protocol: TCP
+        resources: {}
+        volumeMounts:
+        - mountPath: /ticket/appdata
+          name: storage-stg-ticket-ibm-backend
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: docker-io-regcred
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: storage-stg-ticket-ibm-backend
+        persistentVolumeClaim:
+          claimName: pvc-stg-ticket-ibm-backend
