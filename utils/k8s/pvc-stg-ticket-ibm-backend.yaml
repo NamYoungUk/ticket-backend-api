@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    ibm.io/provisioning-status: complete
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{"volume.beta.kubernetes.io/storage-class":"ibmc-file-retain-silver","volume.beta.kubernetes.io/storage-provisioner":"ibm.io/ibmc-file"},"labels":{"billingType":"monthly"},"name":"pvc-stg-ticket-ibm-backend","namespace":"z-care-app"},"spec":{"accessModes":["ReadWriteMany"],"resources":{"requests":{"storage":"40Gi"}}}}
+    pv.kubernetes.io/bind-completed: "yes"
+    pv.kubernetes.io/bound-by-controller: "yes"
+    volume.beta.kubernetes.io/storage-class: ibmc-file-retain-silver
+    volume.beta.kubernetes.io/storage-provisioner: ibm.io/ibmc-file
+  creationTimestamp: "2020-05-27T01:22:22Z"
+  finalizers:
+  - kubernetes.io/pvc-protection
+  labels:
+    billingType: monthly
+    region: jp-tok
+    zone: hkg02
+  name: pvc-stg-ticket-ibm-backend
+  namespace: z-care-app
+  resourceVersion: "109513128"
+  selfLink: /api/v1/namespaces/z-care-app/persistentvolumeclaims/pvc-stg-ticket-ibm-backend
+  uid: 842123f8-9fb8-11ea-928b-e2e7d3c94863
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 40Gi
+  volumeMode: Filesystem
+  volumeName: pvc-842123f8-9fb8-11ea-928b-e2e7d3c94863
+status:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 40Gi
+  phase: Bound

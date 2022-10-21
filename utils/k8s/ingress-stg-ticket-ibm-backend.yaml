@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.bluemix.net/ALB-ID: private-cr934015ddda66464289887531c1af39df-alb1
+    ingress.bluemix.net/client-max-body-size: size=50M
+    ingress.bluemix.net/redirect-to-https: "True"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"extensions/v1beta1","kind":"Ingress","metadata":{"annotations":{"ingress.bluemix.net/ALB-ID":"private-cr934015ddda66464289887531c1af39df-alb1","ingress.bluemix.net/client-max-body-size":"size=50M","ingress.bluemix.net/redirect-to-https":"True"},"labels":{"app":"stg-ticket-ibm-backend"},"name":"stg-ticket-ibm-backend","namespace":"z-care-app"},"spec":{"rules":[{"host":"stg-ticket-ibm.cloudzcp.io","http":{"paths":[{"backend":{"serviceName":"stg-ticket-ibm-backend","servicePort":80}}]}}],"tls":[{"hosts":["stg-ticket-ibm.cloudzcp.io"],"secretName":"cloudzcp-io-cert"}]},"status":{"loadBalancer":{"ingress":[{"ip":"10.174.2.237"}]}}}
+  creationTimestamp: "2020-05-06T04:53:18Z"
+  generation: 1
+  labels:
+    app: stg-ticket-ibm-backend
+  name: stg-ticket-ibm-backend
+  namespace: z-care-app
+  resourceVersion: "129217675"
+  selfLink: /apis/extensions/v1beta1/namespaces/z-care-app/ingresses/stg-ticket-ibm-backend
+  uid: 811d5f65-8f55-11ea-928b-e2e7d3c94863
+spec:
+  rules:
+  - host: stg-ticket-ibm.cloudzcp.io
+    http:
+      paths:
+      - backend:
+          serviceName: stg-ticket-ibm-backend
+          servicePort: 80
+  tls:
+  - hosts:
+    - stg-ticket-ibm.cloudzcp.io
+    secretName: cloudzcp-io-cert
+status:
+  loadBalancer:
+    ingress:
+    - ip: 10.174.2.237
